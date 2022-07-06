@@ -236,33 +236,33 @@ resource "aws_docdb_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
   subnet_ids  = ["subnet-02cb4bb032092bb77", "subnet-0b509a1c548112f21", "subnet-0e577e9cdf572d8ca"]
 }
 
-resource "aws_ebs_volume" "tfer--vol-07b29ef99700b6a8a" {
-  availability_zone    = "us-east-1a"
-  encrypted            = "false"
-  iops                 = "100"
-  multi_attach_enabled = "false"
-  size                 = "1"
-  snapshot_id          = "snap-082cd887a658924e2"
+# resource "aws_ebs_volume" "tfer--vol-07b29ef99700b6a8a" {
+#   availability_zone    = "us-east-1a"
+#   encrypted            = "false"
+#   iops                 = "100"
+#   multi_attach_enabled = "false"
+#   size                 = "1"
+#   snapshot_id          = "snap-082cd887a658924e2"
 
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+#   tags = {
+#     Backup     = "False"
+#     Cloud      = "AWS"
+#     Enviroment = "PROD"
+#     Project    = "Apprendiendo"
+#     owner      = "Nazareno"
+#   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+#   tags_all = {
+#     Backup     = "False"
+#     Cloud      = "AWS"
+#     Enviroment = "PROD"
+#     Project    = "Apprendiendo"
+#     owner      = "Nazareno"
+#   }
 
 
-  type = "gp2"
-}
+#   type = "gp2"
+# }
 
 resource "aws_iam_group" "tfer--Admin" {
   name = "Admin"
