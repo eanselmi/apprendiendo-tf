@@ -26,9 +26,9 @@ output "aws_docdb_subnet_group_tfer--default-vpc-0a959fbbb6e218290_id" {
   value = aws_docdb_subnet_group.tfer--default-vpc-0a959fbbb6e218290.id
 }
 
-output "aws_ebs_volume_tfer--vol-07b29ef99700b6a8a_id" {
-  value = aws_ebs_volume.tfer--vol-07b29ef99700b6a8a.id
-}
+# output "aws_ebs_volume_tfer--vol-07b29ef99700b6a8a_id" {
+#   value = aws_ebs_volume.tfer--vol-07b29ef99700b6a8a.id
+# }
 
 output "aws_iam_group_policy_attachment_tfer--Apprendiendo_AmazonEC2ReadOnlyAccess_id" {
   value = aws_iam_group_policy_attachment.tfer--Apprendiendo_AmazonEC2ReadOnlyAccess.id
