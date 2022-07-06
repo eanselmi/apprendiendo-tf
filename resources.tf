@@ -1117,107 +1117,107 @@ resource "aws_internet_gateway" "tfer--igw-0c1a2115a274b2f48" {
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
-resource "aws_lb" "tfer--ALB-BACKEND" {
-  desync_mitigation_mode     = "defensive"
-  drop_invalid_header_fields = "false"
-  enable_deletion_protection = "false"
-  enable_http2               = "true"
-  enable_waf_fail_open       = "false"
-  idle_timeout               = "60"
-  internal                   = "false"
-  ip_address_type            = "ipv4"
-  load_balancer_type         = "application"
-  name                       = "ALB-BACKEND"
-  security_groups            = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--ALB_sg-01f4248b8fede7303_id}"]
+# resource "aws_lb" "tfer--ALB-BACKEND" {
+#   desync_mitigation_mode     = "defensive"
+#   drop_invalid_header_fields = "false"
+#   enable_deletion_protection = "false"
+#   enable_http2               = "true"
+#   enable_waf_fail_open       = "false"
+#   idle_timeout               = "60"
+#   internal                   = "false"
+#   ip_address_type            = "ipv4"
+#   load_balancer_type         = "application"
+#   name                       = "ALB-BACKEND"
+#   security_groups            = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--ALB_sg-01f4248b8fede7303_id}"]
 
-  subnet_mapping {
-    subnet_id = "subnet-0226c32342aa0c869"
-  }
+#   subnet_mapping {
+#     subnet_id = "subnet-0226c32342aa0c869"
+#   }
 
-  subnet_mapping {
-    subnet_id = "subnet-0b509a1c548112f21"
-  }
+#   subnet_mapping {
+#     subnet_id = "subnet-0b509a1c548112f21"
+#   }
 
-  subnets = ["${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0226c32342aa0c869_id}", "${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0b509a1c548112f21_id}"]
+#   subnets = ["${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0226c32342aa0c869_id}", "${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0b509a1c548112f21_id}"]
 
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+#   tags = {
+#     Backup     = "False"
+#     Cloud      = "AWS"
+#     Enviroment = "PROD"
+#     Project    = "Apprendiendo"
+#     owner      = "Nazareno"
+#   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-}
+#   tags_all = {
+#     Backup     = "False"
+#     Cloud      = "AWS"
+#     Enviroment = "PROD"
+#     Project    = "Apprendiendo"
+#     owner      = "Nazareno"
+#   }
+# }
 
-resource "aws_lb_listener" "tfer--arn-003A-aws-003A-elasticloadbalancing-003A-us-east-1-003A-563337348171-003A-listener-002F-app-002F-ALB-BACKEND-002F-3f4ab810aab9b6ad-002F-1641a33bf85c8ae3" {
-  certificate_arn = "arn:aws:acm:us-east-1:563337348171:certificate/3c637f05-ccd9-4b0f-938e-cefe1c0dab97"
+# resource "aws_lb_listener" "tfer--arn-003A-aws-003A-elasticloadbalancing-003A-us-east-1-003A-563337348171-003A-listener-002F-app-002F-ALB-BACKEND-002F-3f4ab810aab9b6ad-002F-1641a33bf85c8ae3" {
+#   certificate_arn = "arn:aws:acm:us-east-1:563337348171:certificate/3c637f05-ccd9-4b0f-938e-cefe1c0dab97"
 
-  default_action {
-    target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:563337348171:targetgroup/Apprendiendo-Backend/ccea174326cb30fd"
-    type             = "forward"
-  }
+#   default_action {
+#     target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:563337348171:targetgroup/Apprendiendo-Backend/ccea174326cb30fd"
+#     type             = "forward"
+#   }
 
-  load_balancer_arn = data.terraform_remote_state.local.outputs.aws_lb_tfer--ALB-BACKEND_id
-  port              = "443"
-  protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-}
+#   load_balancer_arn = data.terraform_remote_state.local.outputs.aws_lb_tfer--ALB-BACKEND_id
+#   port              = "443"
+#   protocol          = "HTTPS"
+#   ssl_policy        = "ELBSecurityPolicy-2016-08"
+# }
 
-resource "aws_lb_target_group" "tfer--Apprendiendo-Backend" {
-  deregistration_delay = "300"
+# resource "aws_lb_target_group" "tfer--Apprendiendo-Backend" {
+#   deregistration_delay = "300"
 
-  health_check {
-    enabled             = "true"
-    healthy_threshold   = "5"
-    interval            = "30"
-    matcher             = "200"
-    path                = "/"
-    port                = "80"
-    protocol            = "HTTP"
-    timeout             = "5"
-    unhealthy_threshold = "2"
-  }
+#   health_check {
+#     enabled             = "true"
+#     healthy_threshold   = "5"
+#     interval            = "30"
+#     matcher             = "200"
+#     path                = "/"
+#     port                = "80"
+#     protocol            = "HTTP"
+#     timeout             = "5"
+#     unhealthy_threshold = "2"
+#   }
 
-  load_balancing_algorithm_type = "round_robin"
-  name                          = "Apprendiendo-Backend"
-  port                          = "80"
-  protocol                      = "HTTP"
-  protocol_version              = "HTTP1"
-  slow_start                    = "0"
+#   load_balancing_algorithm_type = "round_robin"
+#   name                          = "Apprendiendo-Backend"
+#   port                          = "80"
+#   protocol                      = "HTTP"
+#   protocol_version              = "HTTP1"
+#   slow_start                    = "0"
 
-  stickiness {
-    cookie_duration = "86400"
-    enabled         = "false"
-    type            = "lb_cookie"
-  }
+#   stickiness {
+#     cookie_duration = "86400"
+#     enabled         = "false"
+#     type            = "lb_cookie"
+#   }
 
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+#   tags = {
+#     Backup     = "False"
+#     Cloud      = "AWS"
+#     Enviroment = "PROD"
+#     Project    = "Apprendiendo"
+#     owner      = "Nazareno"
+#   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+#   tags_all = {
+#     Backup     = "False"
+#     Cloud      = "AWS"
+#     Enviroment = "PROD"
+#     Project    = "Apprendiendo"
+#     owner      = "Nazareno"
+#   }
 
-  target_type = "instance"
-  vpc_id      = "vpc-0a959fbbb6e218290"
-}
+#   target_type = "instance"
+#   vpc_id      = "vpc-0a959fbbb6e218290"
+# }
 
 resource "aws_main_route_table_association" "tfer--vpc-0a959fbbb6e218290" {
   route_table_id = data.terraform_remote_state.local.outputs.aws_route_table_tfer--rtb-0abbaa5aba0c1094c_id
