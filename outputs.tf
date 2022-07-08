@@ -330,17 +330,6 @@ output "aws_route_table_tfer--rtb-0abbaa5aba0c1094c_id" {
   value = aws_route_table.tfer--rtb-0abbaa5aba0c1094c.id
 }
 
-output "aws_security_group_tfer--ALB_sg-01f4248b8fede7303_id" {
-  value = aws_security_group.tfer--ALB_sg-01f4248b8fede7303.id
-}
-
-output "aws_security_group_tfer--AWS-OpsWorks-WebApp_sg-01f6b0635b824a2a7_id" {
-  value = aws_security_group.tfer--AWS-OpsWorks-WebApp_sg-01f6b0635b824a2a7.id
-}
-
-output "aws_security_group_tfer--AutoScaling-Security-Group-1_sg-0f189ff58655a4422_id" {
-  value = aws_security_group.tfer--AutoScaling-Security-Group-1_sg-0f189ff58655a4422.id
-}
 
 output "aws_security_group_tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9_id" {
   value = aws_security_group.tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9.id
