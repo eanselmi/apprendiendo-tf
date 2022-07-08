@@ -269,11 +269,6 @@ resource "aws_iam_group" "tfer--Admin" {
   path = "/"
 }
 
-resource "aws_iam_group" "tfer--Apprendiendo" {
-  name = "Apprendiendo"
-  path = "/"
-}
-
 resource "aws_iam_group" "tfer--S3" {
   name = "S3"
   path = "/"
@@ -298,10 +293,7 @@ resource "aws_iam_group_policy" "tfer--Admin_AwsFullAdmin" {
 POLICY
 }
 
-resource "aws_iam_group_policy_attachment" "tfer--Apprendiendo_AmazonEC2ReadOnlyAccess" {
-  group      = "Apprendiendo"
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
-}
+
 
 resource "aws_iam_group_policy_attachment" "tfer--S3_AmazonS3FullAccess" {
   group      = "S3"
@@ -913,15 +905,7 @@ resource "aws_iam_user_group_membership" "tfer--eAnselmi-002F-Admin" {
   user   = "eAnselmi"
 }
 
-resource "aws_iam_user_group_membership" "tfer--eAnselmi-002F-Apprendiendo" {
-  groups = ["Apprendiendo"]
-  user   = "eAnselmi"
-}
 
-resource "aws_iam_user_policy_attachment" "tfer--eAnselmi_IAMUserChangePassword" {
-  policy_arn = "arn:aws:iam::aws:policy/IAMUserChangePassword"
-  user       = "eAnselmi"
-}
 
 resource "aws_iam_user_policy_attachment" "tfer--github_CloudFront-Apprendiendo" {
   policy_arn = "arn:aws:iam::563337348171:policy/CloudFront-Apprendiendo"
