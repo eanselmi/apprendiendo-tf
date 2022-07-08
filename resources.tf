@@ -1002,7 +1002,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
 
 resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
   ami                         = "ami-07d59cc313c47b199"
-  associate_public_ip_address = "true"
+  associate_public_ip_address = "false"
   availability_zone           = "us-east-1a"
 
   capacity_reservation_specification {
