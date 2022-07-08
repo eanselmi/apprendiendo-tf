@@ -232,10 +232,6 @@ output "aws_network_interface_tfer--eni-04acfd53fcefbe352_id" {
   value = aws_network_interface.tfer--eni-04acfd53fcefbe352.id
 }
 
-output "aws_network_interface_tfer--eni-07d02e91bb6e7d246_id" {
-  value = aws_network_interface.tfer--eni-07d02e91bb6e7d246.id
-}
-
 output "aws_network_interface_tfer--eni-0aa5583a058e60ba7_id" {
   value = aws_network_interface.tfer--eni-0aa5583a058e60ba7.id
 }
