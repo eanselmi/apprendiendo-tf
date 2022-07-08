@@ -316,9 +316,7 @@ output "aws_route53_zone_tfer--Z0997941V5WN6N2SL9IP_legaleslara-002E-com-002E-ar
   value = aws_route53_zone.tfer--Z0997941V5WN6N2SL9IP_legaleslara-002E-com-002E-ar.id
 }
 
-output "aws_route_table_association_tfer--subnet-0226c32342aa0c869_id" {
-  value = aws_route_table_association.tfer--subnet-0226c32342aa0c869.id
-}
+
 
 output "aws_route_table_association_tfer--subnet-02cb4bb032092bb77_id" {
   value = aws_route_table_association.tfer--subnet-02cb4bb032092bb77.id
@@ -356,9 +354,7 @@ output "aws_security_group_tfer--default_sg-06ae9d0ab7fd61763_id" {
   value = aws_security_group.tfer--default_sg-06ae9d0ab7fd61763.id
 }
 
-output "aws_subnet_tfer--subnet-0226c32342aa0c869_id" {
-  value = aws_subnet.tfer--subnet-0226c32342aa0c869.id
-}
+
 
 output "aws_subnet_tfer--subnet-02cb4bb032092bb77_id" {
   value = aws_subnet.tfer--subnet-02cb4bb032092bb77.id
