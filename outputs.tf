@@ -30,9 +30,7 @@ output "aws_docdb_subnet_group_tfer--default-vpc-0a959fbbb6e218290_id" {
 #   value = aws_ebs_volume.tfer--vol-07b29ef99700b6a8a.id
 # }
 
-output "aws_iam_group_policy_attachment_tfer--Apprendiendo_AmazonEC2ReadOnlyAccess_id" {
-  value = aws_iam_group_policy_attachment.tfer--Apprendiendo_AmazonEC2ReadOnlyAccess.id
-}
+
 
 output "aws_iam_group_policy_attachment_tfer--S3_AmazonS3FullAccess_id" {
   value = aws_iam_group_policy_attachment.tfer--S3_AmazonS3FullAccess.id
@@ -46,9 +44,7 @@ output "aws_iam_group_tfer--Admin_id" {
   value = aws_iam_group.tfer--Admin.id
 }
 
-output "aws_iam_group_tfer--Apprendiendo_id" {
-  value = aws_iam_group.tfer--Apprendiendo.id
-}
+
 
 output "aws_iam_group_tfer--S3_id" {
   value = aws_iam_group.tfer--S3.id
@@ -178,13 +174,7 @@ output "aws_iam_user_group_membership_tfer--eAnselmi-002F-Admin_id" {
   value = aws_iam_user_group_membership.tfer--eAnselmi-002F-Admin.id
 }
 
-output "aws_iam_user_group_membership_tfer--eAnselmi-002F-Apprendiendo_id" {
-  value = aws_iam_user_group_membership.tfer--eAnselmi-002F-Apprendiendo.id
-}
 
-output "aws_iam_user_policy_attachment_tfer--eAnselmi_IAMUserChangePassword_id" {
-  value = aws_iam_user_policy_attachment.tfer--eAnselmi_IAMUserChangePassword.id
-}
 
 output "aws_iam_user_policy_attachment_tfer--github_CloudFront-Apprendiendo_id" {
   value = aws_iam_user_policy_attachment.tfer--github_CloudFront-Apprendiendo.id
