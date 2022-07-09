@@ -1,26 +1,13 @@
-# data "terraform_remote_state" "local" {
-#   backend = "local"
 
-#   config = {
-#     path = "terraform.tfstate"
-#   }
-# }
-
-
-data "terraform_remote_state" "local" {
-  backend = "remote"
-
-  config = {
-    organization = "eanselmi"
-    workspaces = {
-      name = "Apprendiendo"
-    }
-  }
-}
 
 variable "access_key" {
 
 }
 variable "secret_key" {
+
+}
+
+variable "tags" {
+  type = map(string)
 
 }

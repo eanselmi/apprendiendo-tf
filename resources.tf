@@ -1615,21 +1615,9 @@ resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
   map_public_ip_on_launch                        = "false"
   private_dns_hostname_type_on_launch            = "ip-name"
 
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+  tags = vars.tags
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+  tags_all = var.tags
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
