@@ -1,6 +1,4 @@
-output "aws_acm_certificate_tfer--3c637f05-ccd9-4b0f-938e-cefe1c0dab97_-002A--002E-apprendiendo-002E-net_id" {
-  value = aws_acm_certificate.tfer--3c637f05-ccd9-4b0f-938e-cefe1c0dab97_-002A--002E-apprendiendo-002E-net.id
-}
+
 
 output "aws_budgets_budget_tfer--Apprendiendo_id" {
   value = aws_budgets_budget.tfer--Apprendiendo.id
@@ -10,9 +8,6 @@ output "aws_cloudfront_distribution_tfer--E27BUQA8Y482SH_id" {
   value = aws_cloudfront_distribution.tfer--E27BUQA8Y482SH.id
 }
 
-output "aws_cloudwatch_dashboard_tfer--Apprendiendo_id" {
-  value = aws_cloudwatch_dashboard.tfer--Apprendiendo.id
-}
 
 output "aws_db_instance_tfer--apprendiendo_id" {
   value = aws_db_instance.tfer--apprendiendo.id
@@ -58,24 +53,12 @@ output "aws_iam_instance_profile_tfer--Budget-Control_id" {
   value = aws_iam_instance_profile.tfer--Budget-Control.id
 }
 
-output "aws_iam_instance_profile_tfer--aws-opsworks-ec2-role_id" {
-  value = aws_iam_instance_profile.tfer--aws-opsworks-ec2-role.id
-}
-
-output "aws_iam_policy_tfer--AWSEC2StartStopReboot_id" {
-  value = aws_iam_policy.tfer--AWSEC2StartStopReboot.id
-}
-
 output "aws_iam_policy_tfer--CloudFront-Apprendiendo_id" {
   value = aws_iam_policy.tfer--CloudFront-Apprendiendo.id
 }
 
 output "aws_iam_policy_tfer--S3-Apprendiendo_id" {
   value = aws_iam_policy.tfer--S3-Apprendiendo.id
-}
-
-output "aws_iam_policy_tfer--StopInstance_Production_id" {
-  value = aws_iam_policy.tfer--StopInstance_Production.id
 }
 
 output "aws_iam_role_policy_attachment_tfer--AWSServiceRoleForAmazonSSM_AmazonSSMServiceRolePolicy_id" {
@@ -110,18 +93,6 @@ output "aws_iam_role_policy_attachment_tfer--Budget-Control_AWSBudgetsActionsWit
   value = aws_iam_role_policy_attachment.tfer--Budget-Control_AWSBudgetsActionsWithAWSResourceControlAccess.id
 }
 
-output "aws_iam_role_policy_attachment_tfer--StopInstance_Production_StopInstance_Production_id" {
-  value = aws_iam_role_policy_attachment.tfer--StopInstance_Production_StopInstance_Production.id
-}
-
-output "aws_iam_role_policy_attachment_tfer--StopInstances_StopInstance_Production_id" {
-  value = aws_iam_role_policy_attachment.tfer--StopInstances_StopInstance_Production.id
-}
-
-output "aws_iam_role_policy_tfer--aws-opsworks-service-role_aws-opsworks-service-policy_id" {
-  value = aws_iam_role_policy.tfer--aws-opsworks-service-role_aws-opsworks-service-policy.id
-}
-
 output "aws_iam_role_tfer--AWSServiceRoleForAmazonSSM_id" {
   value = aws_iam_role.tfer--AWSServiceRoleForAmazonSSM.id
 }
@@ -150,20 +121,8 @@ output "aws_iam_role_tfer--Budget-Control_id" {
   value = aws_iam_role.tfer--Budget-Control.id
 }
 
-output "aws_iam_role_tfer--StopInstance_Production_id" {
-  value = aws_iam_role.tfer--StopInstance_Production.id
-}
-
 output "aws_iam_role_tfer--StopInstances_id" {
   value = aws_iam_role.tfer--StopInstances.id
-}
-
-output "aws_iam_role_tfer--aws-opsworks-ec2-role_id" {
-  value = aws_iam_role.tfer--aws-opsworks-ec2-role.id
-}
-
-output "aws_iam_role_tfer--aws-opsworks-service-role_id" {
-  value = aws_iam_role.tfer--aws-opsworks-service-role.id
 }
 
 output "aws_iam_user_group_membership_tfer--NAS-002F-S3_id" {
@@ -238,14 +197,6 @@ output "aws_network_interface_tfer--eni-0aa5583a058e60ba7_id" {
 
 output "aws_network_interface_tfer--eni-0d43eb18190a681a3_id" {
   value = aws_network_interface.tfer--eni-0d43eb18190a681a3.id
-}
-
-output "aws_opsworks_user_profile_tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-root_id" {
-  value = aws_opsworks_user_profile.tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-root.id
-}
-
-output "aws_opsworks_user_profile_tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-user-002F-eAnselmi_id" {
-  value = aws_opsworks_user_profile.tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-user-002F-eAnselmi.id
 }
 
 output "aws_route53_record_tfer--Z00421092ER17TA7ZWT81__045e106fc5fba355b2bea6637fa58057-002E-apprendiendo-002E-net-002E-apprendiendo-002E-net-002E-_CNAME__id" {

@@ -1,19 +1,3 @@
-resource "aws_acm_certificate" "tfer--3c637f05-ccd9-4b0f-938e-cefe1c0dab97_-002A--002E-apprendiendo-002E-net" {
-  domain_name = "*.apprendiendo.net"
-
-  options {
-    certificate_transparency_logging_preference = "ENABLED"
-  }
-
-  subject_alternative_names = ["apprendiendo.net"]
-
-
-
-
-
-  validation_method = "DNS"
-}
-
 resource "aws_budgets_budget" "tfer--Apprendiendo" {
   account_id  = "563337348171"
   budget_type = "COST"
@@ -129,24 +113,13 @@ resource "aws_cloudfront_distribution" "tfer--E27BUQA8Y482SH" {
       restriction_type = "whitelist"
     }
   }
-
   retain_on_delete = "false"
-
-
-
-
-
   viewer_certificate {
     acm_certificate_arn            = "arn:aws:acm:us-east-1:563337348171:certificate/3c637f05-ccd9-4b0f-938e-cefe1c0dab97"
     cloudfront_default_certificate = "false"
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
   }
-}
-
-resource "aws_cloudwatch_dashboard" "tfer--Apprendiendo" {
-  dashboard_body = "{\"widgets\":[]}"
-  dashboard_name = "Apprendiendo"
 }
 
 resource "aws_db_instance" "tfer--apprendiendo" {
@@ -183,9 +156,6 @@ resource "aws_db_instance" "tfer--apprendiendo" {
   tags = {
     Name = "Apprendiendo_DB"
   }
-
-
-
   username               = "admin"
   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9_id}"]
 }
@@ -230,9 +200,6 @@ resource "aws_iam_group_policy" "tfer--Admin_AwsFullAdmin" {
 }
 POLICY
 }
-
-
-
 resource "aws_iam_group_policy_attachment" "tfer--S3_AmazonS3FullAccess" {
   group      = "S3"
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
@@ -248,35 +215,6 @@ resource "aws_iam_instance_profile" "tfer--Budget-Control" {
   name = "Budget-Control"
   path = "/"
   role = "Budget-Control"
-}
-
-resource "aws_iam_instance_profile" "tfer--aws-opsworks-ec2-role" {
-  name = "aws-opsworks-ec2-role"
-  path = "/"
-  role = "aws-opsworks-ec2-role"
-}
-
-resource "aws_iam_policy" "tfer--AWSEC2StartStopReboot" {
-  name = "AWSEC2StartStopReboot"
-  path = "/"
-
-  policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": [
-        "ec2:RebootInstances",
-        "ec2:StartInstances",
-        "ec2:StopInstances"
-      ],
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "VisualEditor0"
-    }
-  ],
-  "Version": "2012-10-17"
-}
-POLICY  
 }
 
 resource "aws_iam_policy" "tfer--CloudFront-Apprendiendo" {
@@ -315,29 +253,6 @@ resource "aws_iam_policy" "tfer--S3-Apprendiendo" {
         "arn:aws:s3:::apprendiendo-naza/*"
       ],
       "Sid": "Stmt1640307015781"
-    }
-  ],
-  "Version": "2012-10-17"
-}
-POLICY
-}
-
-resource "aws_iam_policy" "tfer--StopInstance_Production" {
-  name = "StopInstance_Production"
-  path = "/"
-
-  policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": [
-        "ec2:StopInstances",
-        "ec2:StartInstances",
-        "ec2:DescribeInstanceStatus"
-      ],
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "VisualEditor0"
     }
   ],
   "Version": "2012-10-17"
@@ -512,135 +427,6 @@ POLICY
   path                 = "/"
 }
 
-resource "aws_iam_role" "tfer--StopInstance_Production" {
-  assume_role_policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ssm.amazonaws.com"
-      },
-      "Sid": ""
-    }
-  ],
-  "Version": "2012-10-17"
-}
-POLICY
-
-  description          = "Allows SSM to call AWS services on your behalf"
-  managed_policy_arns  = ["arn:aws:iam::563337348171:policy/StopInstance_Production"]
-  max_session_duration = "3600"
-  name                 = "StopInstance_Production"
-  path                 = "/"
-
-  tags = {
-    Name = "Production"
-  }
-
-
-}
-
-resource "aws_iam_role" "tfer--StopInstances" {
-  assume_role_policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ssm.amazonaws.com"
-      },
-      "Sid": ""
-    }
-  ],
-  "Version": "2012-10-17"
-}
-POLICY
-
-  description          = "Allows SSM to call AWS services on your behalf"
-  managed_policy_arns  = ["arn:aws:iam::563337348171:policy/StopInstance_Production"]
-  max_session_duration = "3600"
-  name                 = "StopInstances"
-  path                 = "/"
-}
-
-resource "aws_iam_role" "tfer--aws-opsworks-ec2-role" {
-  assume_role_policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      }
-    }
-  ],
-  "Version": "2008-10-17"
-}
-POLICY
-
-  max_session_duration = "3600"
-  name                 = "aws-opsworks-ec2-role"
-  path                 = "/"
-}
-
-resource "aws_iam_role" "tfer--aws-opsworks-service-role" {
-  assume_role_policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "opsworks.amazonaws.com"
-      }
-    }
-  ],
-  "Version": "2008-10-17"
-}
-POLICY
-
-  inline_policy {
-    name   = "aws-opsworks-service-policy"
-    policy = "{\"Statement\":[{\"Action\":[\"ec2:*\",\"iam:PassRole\",\"cloudwatch:GetMetricStatistics\",\"cloudwatch:DescribeAlarms\",\"ecs:*\",\"elasticloadbalancing:*\",\"rds:*\"],\"Effect\":\"Allow\",\"Resource\":[\"*\"]}]}"
-  }
-
-  max_session_duration = "3600"
-  name                 = "aws-opsworks-service-role"
-  path                 = "/"
-}
-
-resource "aws_iam_role_policy" "tfer--aws-opsworks-service-role_aws-opsworks-service-policy" {
-  name = "aws-opsworks-service-policy"
-
-  policy = <<POLICY
-{
-  "Statement": [
-    {
-      "Action": [
-        "ec2:*",
-        "iam:PassRole",
-        "cloudwatch:GetMetricStatistics",
-        "cloudwatch:DescribeAlarms",
-        "ecs:*",
-        "elasticloadbalancing:*",
-        "rds:*"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "*"
-      ]
-    }
-  ]
-}
-POLICY
-
-  role = "aws-opsworks-service-role"
-}
-
 resource "aws_iam_role_policy_attachment" "tfer--AWSServiceRoleForAmazonSSM_AmazonSSMServiceRolePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AmazonSSMServiceRolePolicy"
   role       = "AWSServiceRoleForAmazonSSM"
@@ -681,16 +467,6 @@ resource "aws_iam_role_policy_attachment" "tfer--Budget-Control_AWSBudgetsAction
   role       = "Budget-Control"
 }
 
-resource "aws_iam_role_policy_attachment" "tfer--StopInstance_Production_StopInstance_Production" {
-  policy_arn = "arn:aws:iam::563337348171:policy/StopInstance_Production"
-  role       = "StopInstance_Production"
-}
-
-resource "aws_iam_role_policy_attachment" "tfer--StopInstances_StopInstance_Production" {
-  policy_arn = "arn:aws:iam::563337348171:policy/StopInstance_Production"
-  role       = "StopInstances"
-}
-
 resource "aws_iam_user" "tfer--AIDAYGKMFYRFR44JR5JRA" {
   force_destroy = "false"
   name          = "NAS"
@@ -711,8 +487,6 @@ resource "aws_iam_user" "tfer--AIDAYGKMFYRFV6HMQOZ42" {
   tags = {
     Proyecto = "Apprendiendo"
   }
-
-
 }
 
 resource "aws_iam_user_group_membership" "tfer--NAS-002F-S3" {
@@ -724,8 +498,6 @@ resource "aws_iam_user_group_membership" "tfer--eAnselmi-002F-Admin" {
   groups = ["Admin"]
   user   = "eAnselmi"
 }
-
-
 
 resource "aws_iam_user_policy_attachment" "tfer--github_CloudFront-Apprendiendo" {
   policy_arn = "arn:aws:iam::563337348171:policy/CloudFront-Apprendiendo"
@@ -795,9 +567,6 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
   tags = {
     Name = "Backend"
   }
-
-
-
   tenancy                = "default"
   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--default_sg-06ae9d0ab7fd61763_id}"]
 }
@@ -861,9 +630,6 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
   tags = {
     Name = "Mikrotik"
   }
-
-
-
   tenancy                = "default"
   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--default_sg-06ae9d0ab7fd61763_id}"]
 }
@@ -951,18 +717,6 @@ resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
   security_groups    = ["sg-06ae9d0ab7fd61763"]
   source_dest_check  = "true"
   subnet_id          = "subnet-02cb4bb032092bb77"
-}
-
-resource "aws_opsworks_user_profile" "tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-root" {
-  allow_self_management = "false"
-  ssh_username          = "not-root"
-  user_arn              = "arn:aws:iam::563337348171:root"
-}
-
-resource "aws_opsworks_user_profile" "tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-user-002F-eAnselmi" {
-  allow_self_management = "false"
-  ssh_username          = "eanselmi"
-  user_arn              = "arn:aws:iam::563337348171:user/eAnselmi"
 }
 
 resource "aws_route53_record" "tfer--Z00421092ER17TA7ZWT81__045e106fc5fba355b2bea6637fa58057-002E-apprendiendo-002E-net-002E-apprendiendo-002E-net-002E-_CNAME_" {
@@ -1133,10 +887,6 @@ resource "aws_route_table_association" "tfer--subnet-0b509a1c548112f21" {
   subnet_id      = data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0b509a1c548112f21_id
 }
 
-
-
-
-
 resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
   description = "Created by RDS management console"
 
@@ -1161,9 +911,6 @@ resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
   tags = {
     Name = "RDS_SG"
   }
-
-
-
   vpc_id = "vpc-0a959fbbb6e218290"
 }
 
@@ -1187,13 +934,11 @@ resource "aws_security_group" "tfer--default_sg-06ae9d0ab7fd61763" {
   }
 
   name = "default"
-
   tags = {
     Name = "Default_SG"
   }
   vpc_id = "vpc-0a959fbbb6e218290"
 }
-
 
 
 resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
@@ -1209,9 +954,6 @@ resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
   tags = {
     Name = "Private_Subnet_10.0.2.0/24"
   }
-
-
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
@@ -1228,9 +970,6 @@ resource "aws_subnet" "tfer--subnet-0b509a1c548112f21" {
   tags = {
     Name = "Public_Subnet_10.0.1.0/24"
   }
-
-
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
@@ -1247,7 +986,6 @@ resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
   tags = {
     Name = "Private_Subnet_10.0.8.0/24"
   }
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
@@ -1263,6 +1001,4 @@ resource "aws_vpc" "tfer--vpc-0a959fbbb6e218290" {
   tags = {
     Name = "Apprendiendo"
   }
-
-
 }
