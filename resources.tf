@@ -152,4 +152,9 @@ resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
-
+#Unable to delete
+resource "aws_opsworks_user_profile" "tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-user-002F-eAnselmi" {
+  allow_self_management = "false"
+  ssh_username          = "eanselmi"
+  user_arn              = "arn:aws:iam::563337348171:user/eAnselmi"
+}
