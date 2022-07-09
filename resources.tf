@@ -1615,7 +1615,7 @@ resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
   map_public_ip_on_launch                        = "false"
   private_dns_hostname_type_on_launch            = "ip-name"
 
-  tags = vars.tags
+  tags = var.tags
 
   tags_all = var.tags
 
