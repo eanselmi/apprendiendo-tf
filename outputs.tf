@@ -121,10 +121,6 @@ output "aws_iam_role_tfer--Budget-Control_id" {
   value = aws_iam_role.tfer--Budget-Control.id
 }
 
-output "aws_iam_role_tfer--StopInstances_id" {
-  value = aws_iam_role.tfer--StopInstances.id
-}
-
 output "aws_iam_user_group_membership_tfer--NAS-002F-S3_id" {
   value = aws_iam_user_group_membership.tfer--NAS-002F-S3.id
 }
@@ -132,8 +128,6 @@ output "aws_iam_user_group_membership_tfer--NAS-002F-S3_id" {
 output "aws_iam_user_group_membership_tfer--eAnselmi-002F-Admin_id" {
   value = aws_iam_user_group_membership.tfer--eAnselmi-002F-Admin.id
 }
-
-
 
 output "aws_iam_user_policy_attachment_tfer--github_CloudFront-Apprendiendo_id" {
   value = aws_iam_user_policy_attachment.tfer--github_CloudFront-Apprendiendo.id
