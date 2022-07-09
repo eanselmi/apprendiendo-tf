@@ -781,13 +781,10 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
   root_block_device {
     delete_on_termination = "false"
     encrypted             = "false"
-
-    #tags = var.tags
     tags = merge(var.tags,
       {
         Name = "Backend_EBS"
     })
-
     volume_size = "8"
     volume_type = "gp2"
   }
@@ -849,7 +846,10 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
     delete_on_termination = "false"
     encrypted             = "false"
 
-    tags = var.tags
+    tags = merge(var.tags,
+      {
+        Name = "Mikrotik_EBS"
+    })
 
     volume_size = "1"
     volume_type = "gp2"
