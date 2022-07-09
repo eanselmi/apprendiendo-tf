@@ -15,13 +15,7 @@ resource "aws_acm_certificate" "tfer--3c637f05-ccd9-4b0f-938e-cefe1c0dab97_-002A
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   validation_method = "DNS"
 }
@@ -152,13 +146,7 @@ resource "aws_cloudfront_distribution" "tfer--E27BUQA8Y482SH" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   viewer_certificate {
     acm_certificate_arn            = "arn:aws:acm:us-east-1:563337348171:certificate/3c637f05-ccd9-4b0f-938e-cefe1c0dab97"
@@ -212,13 +200,7 @@ resource "aws_db_instance" "tfer--apprendiendo" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   username               = "admin"
   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9_id}"]
@@ -245,14 +227,6 @@ resource "aws_docdb_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
 #   snapshot_id          = "snap-082cd887a658924e2"
 
 #   tags = {
-#     Backup     = "False"
-#     Cloud      = "AWS"
-#     Enviroment = "PROD"
-#     Project    = "Apprendiendo"
-#     owner      = "Nazareno"
-#   }
-
-#   tags_all = {
 #     Backup     = "False"
 #     Cloud      = "AWS"
 #     Enviroment = "PROD"
@@ -313,13 +287,7 @@ resource "aws_iam_instance_profile" "tfer--AmazonSSMManaged" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_instance_profile" "tfer--Budget-Control" {
@@ -335,13 +303,7 @@ resource "aws_iam_instance_profile" "tfer--Budget-Control" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_instance_profile" "tfer--aws-opsworks-ec2-role" {
@@ -357,13 +319,7 @@ resource "aws_iam_instance_profile" "tfer--aws-opsworks-ec2-role" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_policy" "tfer--AWSEC2StartStopReboot" {
@@ -396,13 +352,7 @@ POLICY
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_policy" "tfer--CloudFront-Apprendiendo" {
@@ -433,13 +383,7 @@ POLICY
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_policy" "tfer--S3-Apprendiendo" {
@@ -471,13 +415,7 @@ POLICY
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_policy" "tfer--StopInstance_Production" {
@@ -510,13 +448,7 @@ POLICY
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_iam_role" "tfer--AWSServiceRoleForAmazonSSM" {
@@ -660,9 +592,7 @@ POLICY
     Server = "Production"
   }
 
-  tags_all = {
-    Server = "Production"
-  }
+
 }
 
 resource "aws_iam_role" "tfer--Budget-Control" {
@@ -715,9 +645,7 @@ POLICY
     Name = "Production"
   }
 
-  tags_all = {
-    Name = "Production"
-  }
+
 }
 
 resource "aws_iam_role" "tfer--StopInstances" {
@@ -890,9 +818,7 @@ resource "aws_iam_user" "tfer--AIDAYGKMFYRFV6HMQOZ42" {
     Proyecto = "Apprendiendo"
   }
 
-  tags_all = {
-    Proyecto = "Apprendiendo"
-  }
+
 }
 
 resource "aws_iam_user_group_membership" "tfer--NAS-002F-S3" {
@@ -987,14 +913,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
 
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-    Name       = "Backend"
-  }
+
 
   tenancy                = "default"
   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--default_sg-06ae9d0ab7fd61763_id}"]
@@ -1068,14 +987,7 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
     Name       = "Mikrotik"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-    Name       = "Mikrotik"
-  }
+
 
   tenancy                = "default"
   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--default_sg-06ae9d0ab7fd61763_id}"]
@@ -1090,13 +1002,7 @@ resource "aws_internet_gateway" "tfer--igw-0c1a2115a274b2f48" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1140,13 +1046,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1175,13 +1075,7 @@ resource "aws_network_interface" "tfer--eni-04acfd53fcefbe352" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 
@@ -1205,13 +1099,7 @@ resource "aws_network_interface" "tfer--eni-0aa5583a058e60ba7" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
@@ -1238,13 +1126,7 @@ resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
 
 resource "aws_opsworks_user_profile" "tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-root" {
@@ -1413,13 +1295,7 @@ resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1438,13 +1314,7 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1494,13 +1364,7 @@ resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = "vpc-0a959fbbb6e218290"
 }
@@ -1534,13 +1398,7 @@ resource "aws_security_group" "tfer--default_sg-06ae9d0ab7fd61763" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = "vpc-0a959fbbb6e218290"
 }
@@ -1565,13 +1423,7 @@ resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1594,13 +1446,7 @@ resource "aws_subnet" "tfer--subnet-0b509a1c548112f21" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1637,11 +1483,5 @@ resource "aws_vpc" "tfer--vpc-0a959fbbb6e218290" {
     owner      = "Nazareno"
   }
 
-  tags_all = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 }
