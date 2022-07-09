@@ -193,14 +193,6 @@ output "aws_network_interface_tfer--eni-0d43eb18190a681a3_id" {
   value = aws_network_interface.tfer--eni-0d43eb18190a681a3.id
 }
 
-output "aws_route53_record_tfer--Z00421092ER17TA7ZWT81__045e106fc5fba355b2bea6637fa58057-002E-apprendiendo-002E-net-002E-apprendiendo-002E-net-002E-_CNAME__id" {
-  value = aws_route53_record.tfer--Z00421092ER17TA7ZWT81__045e106fc5fba355b2bea6637fa58057-002E-apprendiendo-002E-net-002E-apprendiendo-002E-net-002E-_CNAME_.id
-}
-
-output "aws_route53_record_tfer--Z00421092ER17TA7ZWT81__4c9d190f1b08e6d44e75cc8876d0f703-002E-www-002E-apprendiendo-002E-net-002E-_CNAME__id" {
-  value = aws_route53_record.tfer--Z00421092ER17TA7ZWT81__4c9d190f1b08e6d44e75cc8876d0f703-002E-www-002E-apprendiendo-002E-net-002E-_CNAME_.id
-}
-
 output "aws_route53_record_tfer--Z00421092ER17TA7ZWT81__ca610b479e2e9cabb270ae96483e7680-002E-apprendiendo-002E-net-002E-_CNAME__id" {
   value = aws_route53_record.tfer--Z00421092ER17TA7ZWT81__ca610b479e2e9cabb270ae96483e7680-002E-apprendiendo-002E-net-002E-_CNAME_.id
 }
