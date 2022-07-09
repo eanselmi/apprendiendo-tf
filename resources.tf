@@ -1617,8 +1617,6 @@ resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
 
   tags = var.tags
 
-  tags_all = var.tags
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
