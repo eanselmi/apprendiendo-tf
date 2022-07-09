@@ -320,16 +320,6 @@ resource "aws_iam_policy" "tfer--S3-Apprendiendo" {
   "Version": "2012-10-17"
 }
 POLICY
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_iam_policy" "tfer--StopInstance_Production" {
