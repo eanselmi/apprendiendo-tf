@@ -7,13 +7,7 @@ resource "aws_acm_certificate" "tfer--3c637f05-ccd9-4b0f-938e-cefe1c0dab97_-002A
 
   subject_alternative_names = ["apprendiendo.net"]
 
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
 
 
@@ -138,13 +132,7 @@ resource "aws_cloudfront_distribution" "tfer--E27BUQA8Y482SH" {
 
   retain_on_delete = "false"
 
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
+
 
 
 
@@ -193,11 +181,7 @@ resource "aws_db_instance" "tfer--apprendiendo" {
   storage_type                          = "gp2"
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
+    Name = "Apprendiendo_DB"
   }
 
 
@@ -217,26 +201,6 @@ resource "aws_docdb_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
   name        = "default-vpc-0a959fbbb6e218290"
   subnet_ids  = ["subnet-02cb4bb032092bb77", "subnet-0b509a1c548112f21", "subnet-0e577e9cdf572d8ca"]
 }
-
-# resource "aws_ebs_volume" "tfer--vol-07b29ef99700b6a8a" {
-#   availability_zone    = "us-east-1a"
-#   encrypted            = "false"
-#   iops                 = "100"
-#   multi_attach_enabled = "false"
-#   size                 = "1"
-#   snapshot_id          = "snap-082cd887a658924e2"
-
-#   tags = {
-#     Backup     = "False"
-#     Cloud      = "AWS"
-#     Enviroment = "PROD"
-#     Project    = "Apprendiendo"
-#     owner      = "Nazareno"
-#   }
-
-
-#   type = "gp2"
-# }
 
 resource "aws_iam_group" "tfer--Admin" {
   name = "Admin"
@@ -278,48 +242,18 @@ resource "aws_iam_instance_profile" "tfer--AmazonSSMManaged" {
   name = "AmazonSSMManaged"
   path = "/"
   role = "AmazonSSMManaged"
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_iam_instance_profile" "tfer--Budget-Control" {
   name = "Budget-Control"
   path = "/"
   role = "Budget-Control"
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_iam_instance_profile" "tfer--aws-opsworks-ec2-role" {
   name = "aws-opsworks-ec2-role"
   path = "/"
   role = "aws-opsworks-ec2-role"
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_iam_policy" "tfer--AWSEC2StartStopReboot" {
@@ -342,17 +276,7 @@ resource "aws_iam_policy" "tfer--AWSEC2StartStopReboot" {
   ],
   "Version": "2012-10-17"
 }
-POLICY
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
+POLICY  
 }
 
 resource "aws_iam_policy" "tfer--CloudFront-Apprendiendo" {
@@ -374,16 +298,6 @@ resource "aws_iam_policy" "tfer--CloudFront-Apprendiendo" {
   "Version": "2012-10-17"
 }
 POLICY
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_iam_policy" "tfer--S3-Apprendiendo" {
@@ -439,16 +353,6 @@ resource "aws_iam_policy" "tfer--StopInstance_Production" {
   "Version": "2012-10-17"
 }
 POLICY
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_iam_role" "tfer--AWSServiceRoleForAmazonSSM" {
@@ -888,13 +792,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
     delete_on_termination = "false"
     encrypted             = "false"
 
-    tags = {
-      Backup     = "False"
-      Cloud      = "AWS"
-      Enviroment = "PROD"
-      Project    = "Apprendiendo"
-      owner      = "Nazareno"
-    }
+    tags = var.tags
 
     volume_size = "8"
     volume_type = "gp2"
@@ -904,13 +802,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
   subnet_id         = data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-02cb4bb032092bb77_id
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-    Name       = "Backend"
-
+    Name = "Backend"
   }
 
 
@@ -963,13 +855,7 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
     delete_on_termination = "false"
     encrypted             = "false"
 
-    tags = {
-      Backup     = "False"
-      Cloud      = "AWS"
-      Enviroment = "PROD"
-      Project    = "Apprendiendo"
-      owner      = "Nazareno"
-    }
+    tags = var.tags
 
     volume_size = "1"
     volume_type = "gp2"
@@ -979,12 +865,7 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
   subnet_id         = data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0b509a1c548112f21_id
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-    Name       = "Mikrotik"
+    Name = "Mikrotik"
   }
 
 
@@ -994,16 +875,6 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
 }
 
 resource "aws_internet_gateway" "tfer--igw-0c1a2115a274b2f48" {
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
@@ -1037,18 +908,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
   }
 
   subnet_ids = ["${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-02cb4bb032092bb77_id}", "${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0b509a1c548112f21_id}", "${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0e577e9cdf572d8ca_id}"]
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
-
-  vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
+  vpc_id     = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
 resource "aws_network_interface" "tfer--eni-04acfd53fcefbe352" {
@@ -1066,16 +926,6 @@ resource "aws_network_interface" "tfer--eni-04acfd53fcefbe352" {
   security_groups    = ["sg-06ae9d0ab7fd61763"]
   source_dest_check  = "false"
   subnet_id          = "subnet-0b509a1c548112f21"
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 
@@ -1090,16 +940,6 @@ resource "aws_network_interface" "tfer--eni-0aa5583a058e60ba7" {
   security_groups    = ["sg-0a846758c5cf449b9"]
   source_dest_check  = "true"
   subnet_id          = "subnet-02cb4bb032092bb77"
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
@@ -1117,16 +957,6 @@ resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
   security_groups    = ["sg-06ae9d0ab7fd61763"]
   source_dest_check  = "true"
   subnet_id          = "subnet-02cb4bb032092bb77"
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
 }
 
 resource "aws_opsworks_user_profile" "tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-root" {
@@ -1286,17 +1116,6 @@ resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
     instance_id          = "i-0daede25a7b2653da"
     network_interface_id = "eni-04acfd53fcefbe352"
   }
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
@@ -1305,17 +1124,6 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "igw-0c1a2115a274b2f48"
   }
-
-  tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
-  }
-
-
-
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
 
@@ -1357,11 +1165,7 @@ resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
   name = "RDS-Apprendiendo"
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
+    Name = "RDS_SG"
   }
 
 
@@ -1391,15 +1195,8 @@ resource "aws_security_group" "tfer--default_sg-06ae9d0ab7fd61763" {
   name = "default"
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
+    Name = "Default_SG"
   }
-
-
-
   vpc_id = "vpc-0a959fbbb6e218290"
 }
 
@@ -1416,11 +1213,7 @@ resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
   private_dns_hostname_type_on_launch            = "ip-name"
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
+    Name = "Private_Subnet_10.0.2.0/24"
   }
 
 
@@ -1439,11 +1232,7 @@ resource "aws_subnet" "tfer--subnet-0b509a1c548112f21" {
   private_dns_hostname_type_on_launch            = "ip-name"
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
+    Name = "Public_Subnet_10.0.1.0/24"
   }
 
 
@@ -1461,7 +1250,9 @@ resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
   map_public_ip_on_launch                        = "false"
   private_dns_hostname_type_on_launch            = "ip-name"
 
-  tags = var.tags
+  tags = {
+    Name = "Private_Subnet_10.0.8.0/24"
+  }
 
   vpc_id = data.terraform_remote_state.local.outputs.aws_vpc_tfer--vpc-0a959fbbb6e218290_id
 }
@@ -1476,11 +1267,7 @@ resource "aws_vpc" "tfer--vpc-0a959fbbb6e218290" {
   instance_tenancy                 = "default"
 
   tags = {
-    Backup     = "False"
-    Cloud      = "AWS"
-    Enviroment = "PROD"
-    Project    = "Apprendiendo"
-    owner      = "Nazareno"
+    Name = "Apprendiendo"
   }
 
 
