@@ -782,7 +782,10 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
     delete_on_termination = "false"
     encrypted             = "false"
 
-    tags = var.tags
+    #tags = var.tags
+    tags = {
+      Name = "Backend_EBS"
+    }
 
     volume_size = "8"
     volume_type = "gp2"
