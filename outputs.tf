@@ -8,25 +8,6 @@ output "aws_cloudfront_distribution_tfer--E27BUQA8Y482SH_id" {
   value = aws_cloudfront_distribution.tfer--E27BUQA8Y482SH.id
 }
 
-
-output "aws_db_instance_tfer--apprendiendo_id" {
-  value = aws_db_instance.tfer--apprendiendo.id
-}
-
-output "aws_db_subnet_group_tfer--default-vpc-0a959fbbb6e218290_id" {
-  value = aws_db_subnet_group.tfer--default-vpc-0a959fbbb6e218290.id
-}
-
-output "aws_docdb_subnet_group_tfer--default-vpc-0a959fbbb6e218290_id" {
-  value = aws_docdb_subnet_group.tfer--default-vpc-0a959fbbb6e218290.id
-}
-
-# output "aws_ebs_volume_tfer--vol-07b29ef99700b6a8a_id" {
-#   value = aws_ebs_volume.tfer--vol-07b29ef99700b6a8a.id
-# }
-
-
-
 output "aws_iam_group_policy_attachment_tfer--S3_AmazonS3FullAccess_id" {
   value = aws_iam_group_policy_attachment.tfer--S3_AmazonS3FullAccess.id
 }
@@ -185,9 +166,6 @@ output "aws_network_interface_tfer--eni-04acfd53fcefbe352_id" {
   value = aws_network_interface.tfer--eni-04acfd53fcefbe352.id
 }
 
-output "aws_network_interface_tfer--eni-0aa5583a058e60ba7_id" {
-  value = aws_network_interface.tfer--eni-0aa5583a058e60ba7.id
-}
 
 output "aws_network_interface_tfer--eni-0d43eb18190a681a3_id" {
   value = aws_network_interface.tfer--eni-0d43eb18190a681a3.id
