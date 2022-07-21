@@ -85,7 +85,7 @@ resource "aws_route_table" "private_backend_crt_apprendiendo" {
   route {
     cidr_block = "0.0.0.0/0"
     #instance_id = aws_instance.apprendiendo_mikrotik.id
-    network_interface_id = aws_network_interface.apprendiendo_mikrotik_eni.id
+    gateway_id = aws_network_interface.apprendiendo_mikrotik_eni.id
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
   tags = {
@@ -93,10 +93,12 @@ resource "aws_route_table" "private_backend_crt_apprendiendo" {
   }
 }
 
+
+
 resource "aws_route_table" "public_rt" {
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "igw-0c1a2115a274b2f48"
+    gateway_id = aws_internet_gateway.apprendiendi_igw.id
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
   tags = {
