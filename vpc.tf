@@ -12,7 +12,7 @@ resource "aws_vpc" "apprendiendo_vpc" {
   }
 }
 
-resource "aws_subnet" "tfer--subnet-0b509a1c548112f21" {
+resource "aws_subnet" "public_subnet" {
   assign_ipv6_address_on_creation                = "false"
   cidr_block                                     = "10.0.1.0/24"
   enable_dns64                                   = "false"
@@ -28,7 +28,7 @@ resource "aws_subnet" "tfer--subnet-0b509a1c548112f21" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
+resource "aws_subnet" "private_subnet_backend" {
   assign_ipv6_address_on_creation                = "false"
   cidr_block                                     = "10.0.8.0/24"
   enable_dns64                                   = "false"
@@ -76,7 +76,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
     to_port    = "0"
   }
 
-  subnet_ids = [aws_subnet.tfer--subnet-02cb4bb032092bb77.id, aws_subnet.tfer--subnet-0b509a1c548112f21.id, aws_subnet.tfer--subnet-0e577e9cdf572d8ca.id]
+  subnet_ids = [aws_subnet.tfer--subnet-02cb4bb032092bb77.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_backend.id]
 
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
@@ -103,9 +103,9 @@ resource "aws_route_table_association" "tfer--subnet-02cb4bb032092bb77" {
   subnet_id      = aws_subnet.tfer--subnet-02cb4bb032092bb77.id
 }
 
-resource "aws_route_table_association" "tfer--subnet-0b509a1c548112f21" {
+resource "aws_route_table_association" "rta_public_subnet" {
   route_table_id = aws_route_table.tfer--rtb-0abbaa5aba0c1094c.id
-  subnet_id      = aws_subnet.tfer--subnet-0b509a1c548112f21.id
+  subnet_id      = aws_subnet.public_subnet.id
 }
 
 
