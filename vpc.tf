@@ -109,7 +109,7 @@ resource "aws_route_table_association" "tfer--subnet-0b509a1c548112f21" {
 }
 
 
-resource "aws_security_group" "tfer--default_sg-06ae9d0ab7fd61763" {
+resource "aws_security_group" "sg_default" {
   description = "default VPC security group"
 
   egress {
