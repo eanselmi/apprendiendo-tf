@@ -115,7 +115,7 @@ resource "aws_route_table" "public_rt" {
 
 
 resource "aws_route_table_association" "rta_private_subnet_backend" {
-  route_table_id = aws_route_table.private_backend_crt.id
+  route_table_id = aws_route_table.private_backend_crt_apprendiendo.id
   subnet_id      = aws_subnet.private_subnet_backend.id
 }
 
