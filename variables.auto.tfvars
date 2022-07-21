@@ -1,7 +1,7 @@
 tags = {
   Backup     = "False"
-  Cloud      = "AWS"
-  Enviroment = "PROD"
+  Cloud      = "aws"
+  Enviroment = "prod"
   Project    = "Apprendiendo"
   owner      = "Nazareno"
 }
