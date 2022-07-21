@@ -85,15 +85,13 @@ resource "aws_route_table" "private_backend_crt_apprendiendo" {
   route {
     cidr_block = "0.0.0.0/0"
     #instance_id = aws_instance.apprendiendo_mikrotik.id
-    gateway_id = aws_network_interface.apprendiendo_mikrotik_eni.id
+    network_interface_id = aws_network_interface.apprendiendo_mikrotik_eni.id
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
   tags = {
     Name = "Private Backend"
   }
 }
-
-
 
 resource "aws_route_table" "public_rt" {
   route {
