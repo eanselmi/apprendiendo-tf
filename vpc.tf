@@ -1,4 +1,4 @@
-resource "aws_vpc" "tfer--vpc-0a959fbbb6e218290" {
+resource "aws_vpc" "apprendiendo_vpc " {
   assign_generated_ipv6_cidr_block = "false"
   cidr_block                       = "10.0.0.0/16"
   enable_classiclink               = "false"
@@ -25,7 +25,7 @@ resource "aws_subnet" "tfer--subnet-0b509a1c548112f21" {
   tags = {
     Name = "Public_Subnet_10.0.1.0/24"
   }
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
@@ -41,16 +41,16 @@ resource "aws_subnet" "tfer--subnet-0e577e9cdf572d8ca" {
   tags = {
     Name = "Private_Subnet_10.0.8.0/24"
   }
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_internet_gateway" "tfer--igw-0c1a2115a274b2f48" {
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_main_route_table_association" "default_rt" {
   route_table_id = aws_route_table.tfer--rtb-0abbaa5aba0c1094c.id
-  vpc_id         = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id         = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
@@ -78,7 +78,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
 
   subnet_ids = [aws_subnet.tfer--subnet-02cb4bb032092bb77.id, aws_subnet.tfer--subnet-0b509a1c548112f21.id, aws_subnet.tfer--subnet-0e577e9cdf572d8ca.id]
 
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
@@ -86,7 +86,7 @@ resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
     cidr_block           = "0.0.0.0/0"
     network_interface_id = aws_network_interface.tfer--eni-04acfd53fcefbe352.id
   }
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
@@ -94,7 +94,7 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "igw-0c1a2115a274b2f48"
   }
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 
@@ -136,7 +136,7 @@ resource "aws_security_group" "sg_default" {
   tags = {
     Name = "Default_SG"
   }
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 
@@ -153,7 +153,7 @@ resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
   tags = {
     Name = "Private_Subnet_10.0.2.0/24"
   }
-  vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 #Unable to delete
