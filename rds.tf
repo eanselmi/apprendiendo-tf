@@ -39,13 +39,13 @@
 # resource "aws_db_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
 #   description = "Created from the RDS Management Console"
 #   name        = "default-vpc-0a959fbbb6e218290"
-#   subnet_ids  = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
+#   subnet_ids  = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id]
 # }
 
 # resource "aws_docdb_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
 #   description = "Created from the RDS Management Console"
 #   name        = "default-vpc-0a959fbbb6e218290"
-#   subnet_ids  = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
+#   subnet_ids  = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id]
 # }
 
 # resource "aws_network_interface" "tfer--eni-0aa5583a058e60ba7" {

@@ -44,21 +44,21 @@ resource "aws_subnet" "private_subnet_backend" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_subnet" "private_subnet_unused" {
-  assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "10.0.8.0/24"
-  enable_dns64                                   = "false"
-  enable_resource_name_dns_a_record_on_launch    = "false"
-  enable_resource_name_dns_aaaa_record_on_launch = "false"
-  ipv6_native                                    = "false"
-  map_public_ip_on_launch                        = "false"
-  private_dns_hostname_type_on_launch            = "ip-name"
+# resource "aws_subnet" "private_subnet_unused" {
+#   assign_ipv6_address_on_creation                = "false"
+#   cidr_block                                     = "10.0.8.0/24"
+#   enable_dns64                                   = "false"
+#   enable_resource_name_dns_a_record_on_launch    = "false"
+#   enable_resource_name_dns_aaaa_record_on_launch = "false"
+#   ipv6_native                                    = "false"
+#   map_public_ip_on_launch                        = "false"
+#   private_dns_hostname_type_on_launch            = "ip-name"
 
-  tags = {
-    Name = "Private_Subnet_10.0.8.0/24"
-  }
-  vpc_id = aws_vpc.apprendiendo_vpc.id
-}
+#   tags = {
+#     Name = "Private_Subnet_10.0.8.0/24"
+#   }
+#   vpc_id = aws_vpc.apprendiendo_vpc.id
+# }
 
 resource "aws_internet_gateway" "apprendiendi_igw" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
@@ -92,7 +92,7 @@ resource "aws_network_acl" "default_nacl" {
     to_port    = "0"
   }
 
-  subnet_ids = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
+  subnet_ids = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id]
 
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
