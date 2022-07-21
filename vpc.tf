@@ -44,22 +44,6 @@ resource "aws_subnet" "private_subnet_backend" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-# resource "aws_subnet" "private_subnet_unused" {
-#   assign_ipv6_address_on_creation                = "false"
-#   cidr_block                                     = "10.0.8.0/24"
-#   enable_dns64                                   = "false"
-#   enable_resource_name_dns_a_record_on_launch    = "false"
-#   enable_resource_name_dns_aaaa_record_on_launch = "false"
-#   ipv6_native                                    = "false"
-#   map_public_ip_on_launch                        = "false"
-#   private_dns_hostname_type_on_launch            = "ip-name"
-
-#   tags = {
-#     Name = "Private_Subnet_10.0.8.0/24"
-#   }
-#   vpc_id = aws_vpc.apprendiendo_vpc.id
-# }
-
 resource "aws_internet_gateway" "apprendiendi_igw" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
@@ -103,6 +87,9 @@ resource "aws_route_table" "private_backend_crt_apprendiendo" {
     network_interface_id = aws_network_interface.apprendiendo_mikrotik_eni.id
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
+  tags = {
+    Name = "Private Backend"
+  }
 }
 
 resource "aws_route_table" "public_rt" {
@@ -111,6 +98,9 @@ resource "aws_route_table" "public_rt" {
     gateway_id = "igw-0c1a2115a274b2f48"
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
+  tags = {
+    Name = "Public RT"
+  }
 }
 
 
