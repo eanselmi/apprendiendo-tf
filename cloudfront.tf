@@ -1,4 +1,4 @@
-resource "aws_cloudfront_distribution" "tfer--E27BUQA8Y482SH" {
+resource "aws_cloudfront_distribution" "apprendiendo_cloudfront" {
   aliases = ["apprendiendo.net", "error.apprendiendo.net", "www.apprendiendo.net"]
 
   custom_error_response {

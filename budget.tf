@@ -1,4 +1,4 @@
-resource "aws_budgets_budget" "tfer--Apprendiendo" {
+resource "aws_budgets_budget" "apprendiendo_budget" {
   account_id  = "563337348171"
   budget_type = "COST"
 

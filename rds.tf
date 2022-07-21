@@ -33,19 +33,19 @@
 #     Name = "Apprendiendo_DB"
 #   }
 #   username               = "admin"
-#   vpc_security_group_ids = ["${data.terraform_remote_state.local.outputs.aws_security_group_tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9_id}"]
+#   vpc_security_group_ids = [aws_security_group.sg_rds_apprendiendo.id]
 # }
 
 # resource "aws_db_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
 #   description = "Created from the RDS Management Console"
 #   name        = "default-vpc-0a959fbbb6e218290"
-#   subnet_ids  = ["${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-02cb4bb032092bb77_id}", "${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0b509a1c548112f21_id}", "${data.terraform_remote_state.local.outputs.aws_subnet_tfer--subnet-0e577e9cdf572d8ca_id}"]
+#   subnet_ids  = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
 # }
 
 # resource "aws_docdb_subnet_group" "tfer--default-vpc-0a959fbbb6e218290" {
 #   description = "Created from the RDS Management Console"
 #   name        = "default-vpc-0a959fbbb6e218290"
-#   subnet_ids  = ["subnet-02cb4bb032092bb77", "subnet-0b509a1c548112f21", "subnet-0e577e9cdf572d8ca"]
+#   subnet_ids  = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
 # }
 
 # resource "aws_network_interface" "tfer--eni-0aa5583a058e60ba7" {
@@ -55,12 +55,12 @@
 #   ipv6_prefix_count  = "0"
 #   private_ip         = "10.0.2.195"
 #   private_ips        = ["10.0.2.195"]
-#   security_groups    = ["sg-0a846758c5cf449b9"]
+#   security_groups    = [aws_security_group.sg_rds_apprendiendo.id]
 #   source_dest_check  = "true"
-#   subnet_id          = "subnet-02cb4bb032092bb77"
+#   subnet_id          = aws_subnet.private_subnet_backend.id
 # }
 
-resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
+resource "aws_security_group" "sg_rds_apprendiendo" {
   description = "Created by RDS management console"
 
   egress {
@@ -88,5 +88,5 @@ resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
   tags = {
     Name = "RDS_SG"
   }
-  vpc_id = "vpc-0a959fbbb6e218290"
+  vpc_id = aws_vpc.apprendiendo_vpc.id
 }

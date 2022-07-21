@@ -7,9 +7,8 @@
 # }
 
 
-data "terraform_remote_state" "local" {
+data "terraform_remote_state" "remote" {
   backend = "remote"
-
   config = {
     organization = "eanselmi"
     workspaces = {
