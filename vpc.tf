@@ -99,7 +99,7 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
 
 
 resource "aws_route_table_association" "tfer--subnet-02cb4bb032092bb77" {
-  route_table_id = aws_route_table.tfer--rtb-07e03d8de796b4a3b.id
+  route_table_id = aws_route_table.rtb-07e03d8de796b4a3b.id
   subnet_id      = aws_subnet.tfer--subnet-02cb4bb032092bb77.id
 }
 
