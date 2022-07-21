@@ -114,7 +114,7 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
   }
 
   source_dest_check = "false"
-  subnet_id         = aws_subnet.tfer--subnet-0b509a1c548112f21.id
+  subnet_id         = aws_subnet.public_subnet.id
 
   tags = {
     Name = "Mikrotik"
