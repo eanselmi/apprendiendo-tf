@@ -81,7 +81,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
   vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
 }
 
-resource "aws_route_table" "rtb-07e03d8de796b4a3b" {
+resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
   route {
     cidr_block           = "0.0.0.0/0"
     network_interface_id = aws_network_interface.tfer--eni-04acfd53fcefbe352.id
@@ -99,7 +99,7 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
 
 
 resource "aws_route_table_association" "tfer--subnet-02cb4bb032092bb77" {
-  route_table_id = aws_route_table.rtb-07e03d8de796b4a3b.id
+  route_table_id = aws_route_table.tfer--rtb-07e03d8de796b4a3b.id
   subnet_id      = aws_subnet.tfer--subnet-02cb4bb032092bb77.id
 }
 
