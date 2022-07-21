@@ -97,7 +97,7 @@ resource "aws_network_acl" "default_nacl" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_route_table" "private_backend_crt" {
+resource "aws_route_table" "private_backend_crt_apprendiendo" {
   route {
     cidr_block           = "0.0.0.0/0"
     network_interface_id = aws_network_interface.apprendiendo_mikrotik_eni.id
