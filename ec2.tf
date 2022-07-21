@@ -57,7 +57,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
     Name = "Backend"
   }
   tenancy                = "default"
-  vpc_security_group_ids = [aws_security_group.tfer--default_sg-06ae9d0ab7fd61763.id]
+  vpc_security_group_ids = [aws_security_group.sg_default.id]
 }
 
 resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
@@ -120,7 +120,7 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
     Name = "Mikrotik"
   }
   tenancy                = "default"
-  vpc_security_group_ids = [aws_security_group.tfer--default_sg-06ae9d0ab7fd61763.id]
+  vpc_security_group_ids = [aws_security_group.sg_default.id]
 }
 
 resource "aws_network_interface" "tfer--eni-04acfd53fcefbe352" {
