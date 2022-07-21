@@ -60,16 +60,16 @@ resource "aws_subnet" "private_subnet_unused" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_internet_gateway" "tfer--igw-0c1a2115a274b2f48" {
+resource "aws_internet_gateway" "apprendiendi_igw" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
 resource "aws_main_route_table_association" "default_rt" {
-  route_table_id = aws_route_table.tfer--rtb-0abbaa5aba0c1094c.id
+  route_table_id = aws_route_table.public_rt.id
   vpc_id         = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
+resource "aws_network_acl" "default_nacl" {
   egress {
     action     = "allow"
     cidr_block = "0.0.0.0/0"
@@ -97,7 +97,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
+resource "aws_route_table" "private_backend_crt" {
   route {
     cidr_block           = "0.0.0.0/0"
     network_interface_id = aws_network_interface.tfer--eni-04acfd53fcefbe352.id
@@ -105,7 +105,7 @@ resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
+resource "aws_route_table" "public_rt" {
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = "igw-0c1a2115a274b2f48"
@@ -115,12 +115,12 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
 
 
 resource "aws_route_table_association" "rta_private_subnet_backend" {
-  route_table_id = aws_route_table.tfer--rtb-07e03d8de796b4a3b.id
+  route_table_id = aws_route_table.private_backend_crt.id
   subnet_id      = aws_subnet.private_subnet_backend.id
 }
 
 resource "aws_route_table_association" "rta_public_subnet" {
-  route_table_id = aws_route_table.tfer--rtb-0abbaa5aba0c1094c.id
+  route_table_id = aws_route_table.public_rt.id
   subnet_id      = aws_subnet.public_subnet.id
 }
 
@@ -153,11 +153,4 @@ resource "aws_security_group" "sg_default" {
     Name = "Default_SG"
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
-}
-
-#Unable to delete
-resource "aws_opsworks_user_profile" "tfer--arn-003A-aws-003A-iam-003A--003A-563337348171-003A-user-002F-eAnselmi" {
-  allow_self_management = "false"
-  ssh_username          = "eanselmi"
-  user_arn              = "arn:aws:iam::563337348171:user/eAnselmi"
 }
