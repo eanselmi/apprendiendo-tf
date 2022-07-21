@@ -83,9 +83,9 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
 
 resource "aws_route_table" "tfer--rtb-07e03d8de796b4a3b" {
   route {
-    cidr_block           = "0.0.0.0/0"
-    instance_id          = "i-0daede25a7b2653da"
-    network_interface_id = "eni-04acfd53fcefbe352"
+    cidr_block  = "0.0.0.0/0"
+    instance_id = "i-0daede25a7b2653da"
+    #network_interface_id = "eni-04acfd53fcefbe352"
   }
   vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
 }
