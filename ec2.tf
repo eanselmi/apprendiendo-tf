@@ -51,7 +51,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
   }
 
   source_dest_check = "true"
-  subnet_id         = aws_route_table_association.tfer--subnet-02cb4bb032092bb77.id
+  subnet_id         = aws_subnet.tfer--subnet-02cb4bb032092bb77.id
 
   tags = {
     Name = "Backend"
