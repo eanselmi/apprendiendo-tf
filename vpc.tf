@@ -28,7 +28,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
-resource "aws_subnet" "private_subnet_backend" {
+resource "aws_subnet" "private_subnet_unused" {
   assign_ipv6_address_on_creation                = "false"
   cidr_block                                     = "10.0.8.0/24"
   enable_dns64                                   = "false"
@@ -76,7 +76,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
     to_port    = "0"
   }
 
-  subnet_ids = [aws_subnet.tfer--subnet-02cb4bb032092bb77.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_backend.id]
+  subnet_ids = [aws_subnet.tfer--subnet-02cb4bb032092bb77.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
 
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
