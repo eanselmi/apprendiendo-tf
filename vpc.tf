@@ -28,6 +28,22 @@ resource "aws_subnet" "public_subnet" {
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
 
+resource "aws_subnet" "private_subnet_backend" {
+  assign_ipv6_address_on_creation                = "false"
+  cidr_block                                     = "10.0.2.0/24"
+  enable_dns64                                   = "false"
+  enable_resource_name_dns_a_record_on_launch    = "false"
+  enable_resource_name_dns_aaaa_record_on_launch = "false"
+  ipv6_native                                    = "false"
+  map_public_ip_on_launch                        = "false"
+  private_dns_hostname_type_on_launch            = "ip-name"
+
+  tags = {
+    Name = "Private_Subnet_10.0.2.0/24"
+  }
+  vpc_id = aws_vpc.apprendiendo_vpc.id
+}
+
 resource "aws_subnet" "private_subnet_unused" {
   assign_ipv6_address_on_creation                = "false"
   cidr_block                                     = "10.0.8.0/24"
@@ -76,7 +92,7 @@ resource "aws_network_acl" "tfer--acl-04f6162eaf30696f4" {
     to_port    = "0"
   }
 
-  subnet_ids = [aws_subnet.tfer--subnet-02cb4bb032092bb77.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
+  subnet_ids = [aws_subnet.private_subnet_backend.id, aws_subnet.public_subnet.id, aws_subnet.private_subnet_unused.id]
 
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
@@ -98,9 +114,9 @@ resource "aws_route_table" "tfer--rtb-0abbaa5aba0c1094c" {
 }
 
 
-resource "aws_route_table_association" "tfer--subnet-02cb4bb032092bb77" {
+resource "aws_route_table_association" "rta_private_subnet_backend" {
   route_table_id = aws_route_table.tfer--rtb-07e03d8de796b4a3b.id
-  subnet_id      = aws_subnet.tfer--subnet-02cb4bb032092bb77.id
+  subnet_id      = aws_subnet.private_subnet_backend.id
 }
 
 resource "aws_route_table_association" "rta_public_subnet" {
@@ -135,23 +151,6 @@ resource "aws_security_group" "sg_default" {
   name = "default"
   tags = {
     Name = "Default_SG"
-  }
-  vpc_id = aws_vpc.apprendiendo_vpc.id
-}
-
-
-resource "aws_subnet" "tfer--subnet-02cb4bb032092bb77" {
-  assign_ipv6_address_on_creation                = "false"
-  cidr_block                                     = "10.0.2.0/24"
-  enable_dns64                                   = "false"
-  enable_resource_name_dns_a_record_on_launch    = "false"
-  enable_resource_name_dns_aaaa_record_on_launch = "false"
-  ipv6_native                                    = "false"
-  map_public_ip_on_launch                        = "false"
-  private_dns_hostname_type_on_launch            = "ip-name"
-
-  tags = {
-    Name = "Private_Subnet_10.0.2.0/24"
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
