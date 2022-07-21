@@ -48,7 +48,7 @@ resource "aws_internet_gateway" "tfer--igw-0c1a2115a274b2f48" {
   vpc_id = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
 }
 
-resource "aws_main_route_table_association" "tfer--vpc-0a959fbbb6e218290" {
+resource "aws_main_route_table_association" "default_rt" {
   route_table_id = aws_route_table.tfer--rtb-0abbaa5aba0c1094c.id
   vpc_id         = aws_vpc.tfer--vpc-0a959fbbb6e218290.id
 }
