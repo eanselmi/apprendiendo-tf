@@ -100,7 +100,7 @@ resource "aws_network_acl" "default_nacl" {
 resource "aws_route_table" "private_backend_crt" {
   route {
     cidr_block           = "0.0.0.0/0"
-    network_interface_id = aws_network_interface.tfer--eni-04acfd53fcefbe352.id
+    network_interface_id = aws_network_interface.apprendiendo_mikrotik_eni.id
   }
   vpc_id = aws_vpc.apprendiendo_vpc.id
 }
