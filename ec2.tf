@@ -1,4 +1,4 @@
-resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
+resource "aws_instance" "apprendiendo_backend" {
   ami                         = "ami-0aeeebd8d2ab47354"
   associate_public_ip_address = "false"
   availability_zone           = "us-east-1a"
@@ -60,7 +60,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
   vpc_security_group_ids = [aws_security_group.sg_default.id]
 }
 
-resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
+resource "aws_instance" "apprendiendo_mikrotik" {
   ami                         = "ami-07d59cc313c47b199"
   associate_public_ip_address = "false"
   availability_zone           = "us-east-1a"
@@ -123,10 +123,10 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
   vpc_security_group_ids = [aws_security_group.sg_default.id]
 }
 
-resource "aws_network_interface" "tfer--eni-04acfd53fcefbe352" {
+resource "aws_network_interface" "apprendiendo_mikrotik_eni" {
   attachment {
     device_index = "0"
-    instance     = "i-0daede25a7b2653da"
+    instance     = aws_instance.apprendiendo_mikrotik.id
   }
 
   description        = "Primary network interface"
@@ -135,15 +135,15 @@ resource "aws_network_interface" "tfer--eni-04acfd53fcefbe352" {
   ipv6_prefix_count  = "0"
   private_ip         = "10.0.1.10"
   private_ips        = ["10.0.1.10"]
-  security_groups    = ["sg-06ae9d0ab7fd61763"]
+  security_groups    = [aws_security_group.sg_default.id]
   source_dest_check  = "false"
-  subnet_id          = "subnet-0b509a1c548112f21"
+  subnet_id          = aws_subnet.public_subnet.id
 }
 
-resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
+resource "aws_network_interface" "apprendiendo_backend_eni" {
   attachment {
     device_index = "0"
-    instance     = "i-003729745a7d7dc9c"
+    instance     = aws_instance.apprendiendo_backend.id
   }
 
   description        = "Primary network interface"
@@ -152,7 +152,7 @@ resource "aws_network_interface" "tfer--eni-0d43eb18190a681a3" {
   ipv6_prefix_count  = "0"
   private_ip         = "10.0.2.10"
   private_ips        = ["10.0.2.10"]
-  security_groups    = ["sg-06ae9d0ab7fd61763"]
+  security_groups    = [aws_security_group.sg_default.id]
   source_dest_check  = "true"
-  subnet_id          = "subnet-02cb4bb032092bb77"
+  subnet_id          = aws_subnet.private_subnet_backend.id
 }
