@@ -32,7 +32,7 @@ resource "aws_instance" "tfer--i-003729745a7d7dc9c_" {
   metadata_options {
     http_endpoint               = "enabled"
     http_put_response_hop_limit = "1"
-    http_tokens                 = "optional"
+    http_tokens                 = "required"
     instance_metadata_tags      = "disabled"
   }
 
@@ -93,7 +93,7 @@ resource "aws_instance" "tfer--i-0daede25a7b2653da_" {
   metadata_options {
     http_endpoint               = "enabled"
     http_put_response_hop_limit = "1"
-    http_tokens                 = "optional"
+    http_tokens                 = "required"
     instance_metadata_tags      = "disabled"
   }
 

@@ -1,8 +1,10 @@
+#tfsec:ignore:aws-iam-enforce-mfa
 resource "aws_iam_group" "tfer--Admin" {
   name = "Admin"
   path = "/"
 }
 
+#tfsec:ignore:aws-iam-enforce-mfa
 resource "aws_iam_group" "tfer--S3" {
   name = "S3"
   path = "/"
@@ -16,6 +18,7 @@ resource "aws_iam_group_policy" "tfer--Admin_AwsFullAdmin" {
 {
   "Statement": [
     {
+#tfsec:ignore:aws-iam-no-policy-wildcards
       "Action": "*",
       "Effect": "Allow",
       "Resource": "*",
@@ -72,6 +75,7 @@ resource "aws_iam_policy" "tfer--S3-Apprendiendo" {
 {
   "Statement": [
     {
+#tfsec:ignore:aws-iam-no-policy-wildcards
       "Action": "s3:*",
       "Effect": "Allow",
       "Resource": [

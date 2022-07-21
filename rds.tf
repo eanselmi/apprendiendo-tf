@@ -64,6 +64,8 @@ resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
   description = "Created by RDS management console"
 
   egress {
+    description = "Allow egress traffic"
+    #tfsec:ignore:aws-vpc-no-public-egress-sgr
     cidr_blocks = ["0.0.0.0/0"]
     from_port   = "0"
     protocol    = "-1"
@@ -72,6 +74,8 @@ resource "aws_security_group" "tfer--RDS-Apprendiendo_sg-0a846758c5cf449b9" {
   }
 
   ingress {
+    #tfsec:ignore:aws-vpc-no-public-ingress-sgr
+    description = "Allow inbound traffic"
     cidr_blocks = ["0.0.0.0/0"]
     from_port   = "3306"
     protocol    = "tcp"

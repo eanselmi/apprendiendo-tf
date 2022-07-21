@@ -113,6 +113,8 @@ resource "aws_security_group" "tfer--default_sg-06ae9d0ab7fd61763" {
   description = "default VPC security group"
 
   egress {
+    description = "Allow egress traffic"
+    #tfsec:ignore:aws-vpc-no-public-egress-sgr
     cidr_blocks = ["0.0.0.0/0"]
     from_port   = "0"
     protocol    = "-1"
@@ -121,6 +123,8 @@ resource "aws_security_group" "tfer--default_sg-06ae9d0ab7fd61763" {
   }
 
   ingress {
+    #tfsec:ignore:aws-vpc-no-public-ingress-sgr
+    description = "Allow inbound traffic"
     cidr_blocks = ["0.0.0.0/0"]
     from_port   = "0"
     protocol    = "-1"
