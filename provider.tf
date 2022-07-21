@@ -14,9 +14,10 @@ terraform {
       name = "Apprendiendo"
     }
   }
+  required_version = "1.1.9"
   required_providers {
     aws = {
-      version = "~> 4.21.0"
+      version = "~> 4"
     }
   }
 }
